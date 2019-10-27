@@ -1,0 +1,2 @@
+class GenreBook < ApplicationRecord
+end

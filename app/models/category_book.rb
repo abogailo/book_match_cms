@@ -1,0 +1,2 @@
+class CategoryBook < ApplicationRecord
+end

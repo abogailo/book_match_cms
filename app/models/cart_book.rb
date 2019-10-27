@@ -1,0 +1,2 @@
+class CartBook < ApplicationRecord
+end
