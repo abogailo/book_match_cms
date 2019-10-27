@@ -1,0 +1,54 @@
+<% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= link_to("<< Back to List", books_path, :class => 'back-link') %>
+<%= link_to("Add Comment", new_review_path(book_id: @book.id)) %>
+<div class="books show">
+  <h2>Show book</h2>
+
+  <table summary="book detail view">
+    <tr>
+      <th>Name</th>
+      <td><%= @book.title %></td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td><%= @book.description %></td>
+    </tr>
+    <tr>
+      <th>Author</th>
+      <td><%= @book.author_id %></td>
+    </tr>
+    <tr>
+      <th>Quantity</th>
+      <td><%= @book.quantity %></td>
+    </tr>
+    <tr>
+      <th>Condition</th>
+      <td><%= @book.condition %></td>
+    </tr>
+    <tr>
+      <th>Price</th>
+      <td><%= @book.price %></td>
+    </tr>
+    <tr>
+      <th>Year Published</th>
+      <td><%= @book.year_published %></td>
+    </tr>
+    <tr>
+      <th>Admin Id</th>
+      <td><%= @book.admin_id %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @book.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @book.updated_at %></td>
+    </tr>
+  </table>
+</div>

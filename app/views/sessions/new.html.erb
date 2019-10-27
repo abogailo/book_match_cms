@@ -1,0 +1,12 @@
+<section class= "bookapp">
+    <header class= "header">
+    <h1> Login! </h1>
+    <%= form_tag(sessions_path) do %>
+        <%= text_field_tag :email, '', :class => "new-book", :placeholder => "Login with your email" %>
+        <%= text_field_tag :password, '', :class => "new-book", :placeholder => "password." %>
+        <%= submit_tag %>
+    <% end %>
+
+    </header>
+    <p> <%= link_to "Login with your Github account", "/auth/github" %> </p>
+</section>

@@ -1,0 +1,14 @@
+
+<%= link_to("<< Back to List", books_path, :class => 'back-link') %>
+
+<h1>Create a Review</h1>
+
+<%= form_for @review  do |f| %>
+  <%= f.label :rating %>
+  <%= f.text_field :rating %>
+  <%= f.label :review %>
+  <%= f.text_field :review %>
+  <br />
+
+  <%= f.submit %>
+<% end %>

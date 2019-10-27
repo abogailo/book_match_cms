@@ -1,0 +1,24 @@
+<% @author_title = "All authors" %>
+<div class= "authors index">
+    <h2> Authors </h2>
+
+<%= link_to("Add New author", new_author_path, :class => 'action new') %>
+<%= link_to("Create Author", new_author_path, :class => 'action new') %>
+
+<table class="listing" summary="author list">
+  <tr class="header">
+    <th>Name</th>
+  </tr>
+  <% @authors.each do |author| %>
+  <tr>
+    <td><%= author.name %></td>
+    
+    <td class="actions">
+      <%= link_to("Show", author_path(author), :class => 'action show') %>
+      <%= link_to("Edit", edit_author_path(author), :class => 'action edit') %>
+      
+    </td>
+  </tr>
+  <% end %>
+</table>
+</div>
