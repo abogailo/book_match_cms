@@ -18,10 +18,36 @@
             <input type="email" autocomplete="off" name="email" placeholder="email..."></p>
             <p><label for="password">Password:</label>
             <input type="password" autocomplete="off" name="password" placeholder="password..."></p>
-            <button type="submit" class="btn btn-info">Submit</button>
+            
+            <button type="submit" class="btn btn-info">Create User</button>
           </form>
 
       </div><!--end jumbotron -->
     </div><!--end col-sm-8 -->
   </div><!-- end row -->
 </div><!-- end container -->
+
+<%= form_for @user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+  
+    <%= f.label :height %>
+    <%= f.text_field :height %><br>
+  
+    <%= f.label :happiness %>
+    <%= f.text_field :happiness %><br>
+  
+    <%= f.label :nausea %>
+    <%= f.text_field :nausea %><br>
+  
+    <%= f.label :tickets %>
+    <%= f.text_field :tickets %><br>
+  
+    <%= f.label :password %>
+    <%= f.text_field :password %><br>
+  
+    <%= f.label :admin %>
+    <%= f.check_box :admin %><br>
+  
+    <%= f.submit 'Create User' %>
+  <% end %>

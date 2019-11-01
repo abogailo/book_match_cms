@@ -51,4 +51,18 @@
       <td><%= @book.updated_at %></td>
     </tr>
   </table>
+
+    <table summary = "reviews">
+        <tr class = "header">
+        <th>Rating</th>
+        <th>Review</th>
+        </tr>
+
+        <% @book.reviews.each do |r| %>
+        <tr>
+        <td><%= r.rating %></td>
+        <td><%= r.review%></td>
+        </tr>
+        <% end %>
+    </table>
 </div>
