@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       def show
         @user = User.find_by(:id => params[:id])
         if logged_in? && current_user == @user
-          render :show
+          render :new
         else
           redirect_to new_session_path
         end
@@ -31,9 +31,9 @@ class UsersController < ApplicationController
     
       def update
         @user = User.find(params[:id])
-        if @user.authenticate(params[:user][:old_password])
+        if current_user
           if @user.update(user_params)
-            redirect_to user_path(@user)
+            redirect_to user_path(@user), alert: "This user has been updated"
           else
             render :edit
           end
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
       private
     
           def user_params
-            params.require(:user).permit(:name, :email, :password)
+            params.require(:user).permit(:name, :email, :password, :admin)
           end
 end

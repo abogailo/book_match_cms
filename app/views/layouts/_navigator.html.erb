@@ -1,15 +1,22 @@
 <div class="container">
   <div class="header-inner">
-    <h1><%= link_to("Add New Book", new_book_path, :class => 'action new')%></h1>
+    <p><%= link_to("Change Admin Rights", edit_user_path(current_user), :class => 'action edit')%></p>
+    <li class="cta"><%= link_to "Browse Books", root_path %></li>
     <nav role="navigation">
       <ul>
         <% if !current_user %>
             <li class="cta"><%= link_to "Sign up", new_user_path %></li>
             <li class="cta"><%= link_to "Log in", new_session_path %></li>
+            
+        <% elsif current_user.admin %>
+        <li class="cta"><%= link_to "Add New Book", new_book_path %></li>
+        <li class="cta"><%= link_to "Add An Author", new_author_path %></li>
+        <li class="cta"><%= link_to "Log out", logout_path %></li>
         <% else %>
           <li> logged in as: <%= link_to current_user.email, new_book_path %></li>
-          <li class="cta"><%= link_to "My Job Applications", new_book_path unless current_user.admin? %></li>
-          <li class="cta"><%= link_to "  Log out", logout_path %></li>
+          <li class="cta"><%= link_to "Browse Books", root_path unless current_user.admin? %></li>
+          <li class="cta"><%= link_to "View Cart", root_path unless current_user.admin? %></li>
+          <li class="cta"><%= link_to "Log out", logout_path %></li>
         <% end %>
       </ul>
     </nav>
