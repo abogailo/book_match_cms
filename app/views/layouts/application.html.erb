@@ -10,6 +10,10 @@
   </head>
 
   <body>
+      <header id="header" role="banner">
+          <%= render 'layouts/messages' %>
+          <%= render 'layouts/navigator' %>
+      </header>
     <%= yield %>
   </body>
 </html>

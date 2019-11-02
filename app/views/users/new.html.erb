@@ -1,53 +1,31 @@
-<h1 style="color: white; margin: 35px 10px;">Sign Up!</h1>
+<div class="container text-center">
+  <h1>Sign Up</h1>
+</div>
 
-
-  <div class="container" >
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="jumbotron" style="background: white; border-radius:10px; margin-top: 10px;">
-          
-
-          <h1>Sign Up!</h1>
-          <form action="/signup" method="POST">
-            <% if flash.has?(:message) %>
-            <p style="color:#f0ad4e;"><%= flash[:message] %> </p>
-            <% end %>
-            <p><label for="username">Username:</label>
-            <input type="text" autocomplete="off" name="username" placeholder="username..."></p>
-            <p><label for="email">Email:</label>
-            <input type="email" autocomplete="off" name="email" placeholder="email..."></p>
-            <p><label for="password">Password:</label>
-            <input type="password" autocomplete="off" name="password" placeholder="password..."></p>
-            
-            <button type="submit" class="btn btn-info">Create User</button>
-          </form>
-
-      </div><!--end jumbotron -->
-    </div><!--end col-sm-8 -->
-  </div><!-- end row -->
-</div><!-- end container -->
-
-<%= form_for @user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-  
-    <%= f.label :height %>
-    <%= f.text_field :height %><br>
-  
-    <%= f.label :happiness %>
-    <%= f.text_field :happiness %><br>
-  
-    <%= f.label :nausea %>
-    <%= f.text_field :nausea %><br>
-  
-    <%= f.label :tickets %>
-    <%= f.text_field :tickets %><br>
-  
-    <%= f.label :password %>
-    <%= f.text_field :password %><br>
-  
-    <%= f.label :admin %>
-    <%= f.check_box :admin %><br>
-  
-    <%= f.submit 'Create User' %>
+<div class="container">
+  <%= form_for @user do |f| %>
+    <div class="form-group row">
+      <%= f.label :name, :class => "col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :email, :class => "col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :email, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :password, :class => "col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.password_field :password, :class => "form-control" %><br>
+      </div>
+    </div>
+    <div class="col text-center">
+      <%= f.submit "Sign Up", :class => "btn btn-primary" %>
+    </div>
   <% end %>
+  <br>
+</div>
+
