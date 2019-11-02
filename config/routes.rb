@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :show]
   end
   resources :authors
+  resources :genre_books
+  resources :genres
 
 
   resources :reviews
