@@ -1,6 +1,8 @@
 Please Add Genre for book!
 
 <%= form_for @genre_book do |f| %>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+    <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name,
+    { multiple: true }  %>
+    <%= f.hidden_field "book_id", :value => params[:book_id] %>
     <%= f.submit %>
   <% end %>

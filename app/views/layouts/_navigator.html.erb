@@ -10,6 +10,7 @@
             
         <% elsif current_user.admin %>
         <li class="cta"><%= link_to "Add New Book", new_book_path %></li>
+        <li class="cta"><%= link_to "Add Category", new_category_path %></li>
         <li class="cta"><%= link_to "Add An Author", new_author_path %></li>
         <li class="cta"><%= link_to "Add A Genre", new_genre_path %></li>
         <li class="cta"><%= link_to "Log out", logout_path %></li>

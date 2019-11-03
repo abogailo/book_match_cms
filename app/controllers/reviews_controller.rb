@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
-    before_action :get_book
     
     def new
       @review = Review.new(book_id: params[:book_id])
+      $book = Book.find_by(params[:book_id])
+      puts $book.id
     end
 
     def create
       @review = Review.new(review_params)
-      @review.book_id = @book.id
       if @review.save
           flash[:notice] = "review created successfully."
           redirect_to(books_path)

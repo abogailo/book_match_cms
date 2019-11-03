@@ -1,5 +1,4 @@
 class GenreBooksController < ApplicationController
-    before_action :get_book 
 
     def index
         @genre_book = GenreBook.all
@@ -12,10 +11,8 @@ class GenreBooksController < ApplicationController
     end
 
     def create
-        @genre_book = GenreBook.new(genre_book_params)
         @genre = Genre.find(params[:genre_book][:genre_id])
-        
-        @genre_book.book_id = @book.id
+        @genre_book = GenreBook.new(genre_book_params)
         @genre_book.genre_id = @genre.id
         #change to sorted after adding lamdas scope thing
         if @genre_book.save
@@ -28,15 +25,11 @@ class GenreBooksController < ApplicationController
 
     private
 
-    def get_book
-        @book = Book.find_by(params[:book_id])
-        puts @book
-    end
 
     def genre_book_params
         params.require(:genre_book).permit(
           :book_id, #can I use strong params for this
-          :genre_id)
+          genre_ids:[])
     end
 
 end

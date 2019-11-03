@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :authors
   resources :genre_books
   resources :genres
+  resources :categories
 
 
   resources :reviews
