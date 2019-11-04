@@ -1,50 +1,8 @@
 
-<%= link_to("<< Back to List", books_path, :class => 'back-link') %>
-
 <div class="books new">
   <h2>Create book</h2>
 
-  <%= form_for(@book) do |f| %>
-
-    <table summary="book form fields">
-      <tr>
-        <th>Title</th>
-        <td><%= f.text_field(:title) %></td>
-      </tr>
-      <tr>
-        <th>Description</th>
-        <td><%= f.text_field(:description) %></td>
-      </tr>
-      <tr>
-        <th>Author Full Name</th>
-        <td><%= f.text_field(:author_id) %></td>
-      </tr>
-      <tr>
-        <th>Quantity</th>
-        <td><%= f.text_field(:quantity) %></td>
-      </tr>
-      <tr>
-        <th>Condition</th>
-        <td><%= f.text_field(:condition) %></td>
-      </tr>
-      <tr>
-        <th>Price</th>
-        <td><%= f.text_field(:price) %></td>
-      </tr>
-      <tr>
-        <th>Year Published</th>
-        <td><%= f.text_field(:year_published) %></td>
-      </tr>
-      <tr>
-      <th>User</th>
-      <td><%= f.text_field(:admin_id) %></td>
-    </tr>
-    </table>
-
-
-    <div class="form-buttons">
-      <%= f.submit("Continue") %>
-    </div>
-
+    <%= form_tag books_path do %>
+      <%= render(:partial => 'form') %>
   <% end %>
 </div>

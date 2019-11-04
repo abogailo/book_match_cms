@@ -1,0 +1,10 @@
+<div class="books new">
+  <h2>Create book</h2>
+
+    <%= form_tag book_path(@book), method: "put" do %>
+      <%= render (:partial => 'form', :locals => {:f => f})%>
+
+    
+
+  <% end %>
+</div>

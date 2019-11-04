@@ -3,3 +3,4 @@ class DropCategoryBooks < ActiveRecord::Migration[6.0]
     drop_table :category_books
   end
 end
+

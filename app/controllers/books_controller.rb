@@ -19,7 +19,7 @@ class BooksController < ApplicationController
       @book.author_id = @author.id
       if @book.save
         flash[:notice] = "book created successfully."
-        redirect_to(new_genre_book_path(book_id: @book.id))
+        redirect_to(books_path)
         
       else
         render('new')
@@ -55,7 +55,15 @@ class BooksController < ApplicationController
   
     def book_params
       params.require(:book).permit(
-        :title, :description, :author_id, :quantity, :condition, :price, :year_published, :admin_id)
+        :title, 
+        :description, 
+        :author_id, 
+        :quantity, 
+        :condition, 
+        :price, 
+        :year_published, 
+        :admin_id,
+        genre_ids:[], genres_attributes: [:name])
     end
 
   end
