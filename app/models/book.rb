@@ -8,8 +8,10 @@ class Book < ApplicationRecord
 
     def genres_attributes=(genre_attributes)
         genre_attributes.values.each do |genre_attribute|
-            genre = Genre.find_or_create_by(genre_attribute)
-            self.genres << genre
+            if !genre_attribute[:name].blank?
+                genre = Genre.find_or_create_by(genre_attribute)
+                self.genres << genre
+            end
         end
     end
     
