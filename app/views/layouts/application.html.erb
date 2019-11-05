@@ -5,15 +5,29 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <header id="header" role="banner">
-          <%= render 'layouts/messages' %>
-          <%= render 'layouts/navigator' %>
-      </header>
-    <%= yield %>
+
+  <div class="container" >
+      <div class="row">
+        <div class="col-sm-8">
+            <div class="jumbotron" style="background: white; border-radius:10px; margin-top: 10px;">
+              <header id="header" role="banner">
+                    <%= render 'layouts/messages' %>
+                  <% if current_user.admin %>
+                    <%= render 'layouts/navigator' %>
+                  <% end %>
+              </header>
+            
+            <%= yield %>
+            
+        </div><!--end jumbotron -->
+        </div><!--end col-sm-8 -->
+      </div><!-- end row -->
+    </div><!-- end container -->
   </body>
 </html>

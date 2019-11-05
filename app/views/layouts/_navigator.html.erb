@@ -1,26 +1,63 @@
-<div class="container">
-  <div class="header-inner">
-    <p><%= link_to("Change Admin Rights", edit_user_path(current_user), :class => 'action edit')%></p>
-    <li class="cta"><%= link_to "Browse Books", root_path %></li>
-    <nav role="navigation">
-      <ul>
-        <% if !current_user %>
-            <li class="cta"><%= link_to "Sign up", new_user_path %></li>
-            <li class="cta"><%= link_to "Log in", new_session_path %></li>
-            
-        <% elsif current_user.admin %>
-        <li class="cta"><%= link_to "Add New Book", new_book_path %></li>
-        <li class="cta"><%= link_to "Add Category", new_category_path %></li>
-        <li class="cta"><%= link_to "Add An Author", new_author_path %></li>
-        <li class="cta"><%= link_to "Add A Genre", new_genre_path %></li>
-        <li class="cta"><%= link_to "Log out", logout_path %></li>
-        <% else %>
-          <li> logged in as: <%= link_to current_user.email, new_book_path %></li>
-          <li class="cta"><%= link_to "Browse Books", root_path unless current_user.admin? %></li>
-          <li class="cta"><%= link_to "View Cart", root_path unless current_user.admin? %></li>
-          <li class="cta"><%= link_to "Log out", logout_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</div>
+<div class="top-stuff">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" <%= link_to "Book Store", root_path%></a>
+            </div> <!--navbarheader --?
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="#">Link<span class="sr-only">(current)</span></a></li> -->
+                  </ul>
+
+                  <ul class="nav navbar-nav navbar-right">
+
+                    <li class="cta"><%= link_to "Browse Books", root_path %></li>
+
+                  <% if !current_user %>
+
+                      <li class="cta"><%= link_to "Sign up", new_user_path %></li>
+                      <li class="cta"><%= link_to "Log in", new_session_path %></li>
+                  
+                  <% elsif current_user.admin %>
+
+                      <li class="cta"><%= link_to "Add New Book", new_book_path %></li>
+                      <li class="cta"><%= link_to "Add An Author", new_author_path %></li>
+                      <li class="cta"><%= link_to "Add A Genre", new_genre_path %></li>
+
+                  <% else %>
+
+                      <li> logged in as: <%= link_to current_user.email, new_book_path %></li>
+                      <li class="cta"><%= link_to "Browse Books", root_path unless current_user.admin? %></li>
+                      <li class="cta"><%= link_to "View Cart", root_path unless current_user.admin? %></li>
+
+                  <% end %>
+
+                      <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Account <span class="caret"></span></a>
+                      
+                      <ul class="dropdown-menu">
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/users/:id/edit"><span class="glyphicon glyphicon-edit"></span> Edit Account</a></li>
+                        <li> <%= link_to("Change Admin Rights", edit_user_path(current_user), :class => 'action edit')%></a></li>
+                        <li class="cta"><%= link_to "Log out", logout_path %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+    
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        </div><!--end jumbotron -->
+      </div><!--end col-sm-8 -->
+    </div><!-- end row -->
+  </div><!-- end container -->
