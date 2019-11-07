@@ -1,7 +1,8 @@
 
 <div class= "books index">
-    <h2> Hudson Books </h2>
+    <h2> Get a Book </h2>
 
+    <%= link_to("Show authors", authors_path) %>
 <table class="listing" summary="Book list">
   <tr class="header">
     <th>Title</th>
@@ -27,7 +28,8 @@
     
     <td class="actions">
       <%= link_to("Show", book_path(book), :class => 'action show') %>
-
+      <td><%= button_to 'Add to Cart', {:controller => "votes", :action => "create", :car_id => car.id, :user_id=> session[:user_id]} , :method=>:post  %></td>
+      <%= link_to("Add To Cart", book_path(book), :class => 'action show') %>
       <%= link_to("Edit", edit_book_path(book), :class => 'action edit') unless !current_user.admin?%>
       <%= link_to("Delete", book_path(book), :class => 'action delete') unless !current_user.admin?%>
     </td>

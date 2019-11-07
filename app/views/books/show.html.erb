@@ -1,10 +1,7 @@
-<% if !flash[:notice].blank? %>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 
 <%= link_to("Add Review", new_review_path(book_id: @book.id)) %>
+
+
 <div class="books show">
   <h2>Show book</h2>
 

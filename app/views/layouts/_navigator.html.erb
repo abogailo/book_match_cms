@@ -35,7 +35,6 @@
                   <% else %>
 
                       <li> logged in as: <%= link_to current_user.email, new_book_path %></li>
-                      <li class="cta"><%= link_to "Browse Books", root_path unless current_user.admin? %></li>
                       <li class="cta"><%= link_to "View Cart", root_path unless current_user.admin? %></li>
 
                   <% end %>
