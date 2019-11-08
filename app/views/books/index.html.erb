@@ -28,8 +28,6 @@
     
     <td class="actions">
       <%= link_to("Show", book_path(book), :class => 'action show') %>
-      <td><%= button_to 'Add to Cart', {:controller => "votes", :action => "create", :car_id => car.id, :user_id=> session[:user_id]} , :method=>:post  %></td>
-      <%= link_to("Add To Cart", book_path(book), :class => 'action show') %>
       <%= link_to("Edit", edit_book_path(book), :class => 'action edit') unless !current_user.admin?%>
       <%= link_to("Delete", book_path(book), :class => 'action delete') unless !current_user.admin?%>
     </td>
