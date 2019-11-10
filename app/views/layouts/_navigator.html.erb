@@ -34,7 +34,7 @@
 
                   <% else %>
 
-                      <li> logged in as: <%= link_to current_user.email, new_book_path %></li>
+                      <li> <p> <%= link_to current_user.name, users_path %> </p></li>
                       
 
                   <% end %>
@@ -44,12 +44,10 @@
                       
                       <ul class="dropdown-menu">
                         <li role="separator" class="divider"></li>
-                        <li><a href="/users/:id/edit"><span class="glyphicon glyphicon-edit"></span> Edit Account</a></li>
-                        <li> <%= link_to("Change Admin Rights", edit_user_path(current_user), :class => 'action edit')%></a></li>
+                        <li> <%= link_to("Edit User", edit_user_path(current_user), :class => 'action edit')%></a></li>
                         <li class="cta"><%= link_to "Log out", logout_path, method: :post  %></li>
 
                         <div>
-                <h5><%= button_to "Log out", "/logout", method: :delete %></h5>
               </div>
                       </ul>
                     </li>
