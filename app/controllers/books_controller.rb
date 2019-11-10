@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
+    before_action :authenticate
+  
     def index
       @books = Book.all
+      #@user_favorites = current_user.favorite_books
       #change to sorted after adding lamdas scope thing
     end
   
@@ -15,8 +18,8 @@ class BooksController < ApplicationController
   
     def create
       @book = Book.new(book_params)
-      @author = Author.find_or_create_by(name: params[:book][:author_id])
-      @book.author_id = @author.id
+      #@author = Author.find_or_create_by(name: params[:book][:author_id])
+      #@book.author_id = @author.id
       if @book.save
         flash[:notice] = "book created successfully."
         redirect_to(books_path)
@@ -45,11 +48,25 @@ class BooksController < ApplicationController
   
     def destroy
       @book = Book.find(params[:id])
+      authorize @book
       @book.destroy
       flash[:notice] = "book destroyed successfully."
       redirect_to(books_path)
     end
   
+    def favorite
+      @book = Book.find(params[:id])
+      current_user.favorited_books << @book
+      redirect_to book_path(@book)
+    end
+
+    def unfavorite
+      @book = Book.find(params[:id])
+      current_user.favorites.find_by(book_id: 
+          @book).destroy
+      redirect_to book_path(@book)
+    end
+
     private
   
     def book_params

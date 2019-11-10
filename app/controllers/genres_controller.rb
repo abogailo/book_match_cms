@@ -18,6 +18,12 @@ class GenresController < ApplicationController
         end
     end
 
+    def destroy
+        authorize @genre
+        @genre.destroy
+        redirect_to root_path, flash[:notice] = "Genre #{@genre.name} has been deleted"
+    end
+
     private
 
     def genre_params

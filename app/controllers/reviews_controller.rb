@@ -2,8 +2,6 @@ class ReviewsController < ApplicationController
     
     def new
       @review = Review.new(book_id: params[:book_id])
-      $book = Book.find_by(params[:book_id])
-      puts $book.id
     end
 
     def create
@@ -16,12 +14,14 @@ class ReviewsController < ApplicationController
         end
     end
 
-    private
-    
-    def get_book
-      @book = Book.find_by(params[:book_id])
-      puts @book
+    def destroy
+      if current_user.admin
+        @review.delete
+        redirect_to show_episode_path(@show, @episode), flash: {notice: "comment deleted"}
+      end
     end
+
+    private
 
     def review_params
       params.require(:review).permit(

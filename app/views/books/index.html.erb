@@ -30,6 +30,14 @@
       <%= link_to("Show", book_path(book), :class => 'action show') %>
       <%= link_to("Edit", edit_book_path(book), :class => 'action edit') unless !current_user.admin?%>
       <%= link_to("Delete", book_path(book), :class => 'action delete') unless !current_user.admin?%>
+      <% if current_user.favorited_books.include?(book) %>
+      <h5><%= button_to "UnFavorite \"#{book.title}\"",     
+            unfavorite_book_path(book.id), method: "POST" %></h5>
+      <% else %>
+        <h5><%= button_to "Favorite #{book.title}", favorite_book_path(book.id), 
+          method: "POST"  %></h5>
+
+      <% end %>
     </td>
   </tr>
   <% end %>

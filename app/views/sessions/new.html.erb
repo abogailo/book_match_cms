@@ -26,5 +26,11 @@
 </div>
 
     </header>
-    <p> <%= link_to "Login with your Github account", "/auth/github" %> </p>
+    <div class= "github sign-in", align="center">
+    <h5> <%= link_to "Login with your Github account", "/auth/github" %> </h5>
+    </div>
+
+    <div class= "sign up", align="center">
+    <%= submit_tag "Sign Up", :class => "btn btn-success" %>
+    </div>
 </section>
