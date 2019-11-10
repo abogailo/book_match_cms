@@ -7,5 +7,5 @@ class FavoritesController < ApplicationController
     def create
   
     end
-    
+    #can i delete
   end

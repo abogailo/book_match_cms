@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-    belongs_to :user
+    belongs_to :author, :autosave => true
     has_many :reviews, dependent: :destroy
    
     has_many :genre_books
@@ -7,8 +7,9 @@ class Book < ApplicationRecord
 
     has_many :favorites, dependent: :destroy
     has_many :books_favorited, through: :favorites, source: :user
-
-
+    accepts_nested_attributes_for :author #add find and create by in this model, issue getting params in model, issue getting name of author to change to author id. perhaps call this method
+#https://stackoverflow.com/questions/3579924/accepts-nested-attributes-for-with-find-or-create/
+#try referencing this again
     def genres_attributes=(genre_attributes)
         genre_attributes.values.each do |genre_attribute|
             if !genre_attribute[:name].blank?
@@ -17,9 +18,4 @@ class Book < ApplicationRecord
             end
         end
     end
-
-    def authors_attributes=(author_attributes)
-        @author = Author.find_or_create_by(name: author_attributes[:name]) unless author_attributes[:name].blank?
-    end
-
 end
