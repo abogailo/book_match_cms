@@ -18,12 +18,13 @@ class BooksController < ApplicationController
   
     def create
       @book = Book.new(book_params)
-      #@author = Author.find_or_create_by(name: params[:book][:author_id])
-      #@book.author_id = @author.id
+      @author = Author.find_or_create_by(name: params[:book][:author_id])
+      @book.author_id = @author.id
       if @book.save
         flash[:notice] = "book created successfully."
         redirect_to(books_path)
       else
+        flash[:notice] = "issue creating book"
         render('new')
       end
     end
@@ -42,13 +43,8 @@ class BooksController < ApplicationController
       end
     end
   
-    def delete
-      @book = Book.find(params[:id])
-    end
-  
     def destroy
       @book = Book.find(params[:id])
-      authorize @book
       @book.destroy
       flash[:notice] = "book destroyed successfully."
       redirect_to(books_path)
