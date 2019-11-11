@@ -16,6 +16,11 @@
         <tr>
         <td><%= r.title %></td>
         </tr>
-        <% end %>
+
+        <td class="actions">
+            <% if favorite_matches?(r) %>
+            <p> MATCH </p>
+            <% end %>
+        </td>
     </table>
-</div>
+  <% end %>

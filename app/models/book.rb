@@ -19,4 +19,8 @@ class Book < ApplicationRecord
             end
         end
     end
+
+    def self.favorited_books
+        select { |h| h.users.count >= 5 }
+    end
 end
