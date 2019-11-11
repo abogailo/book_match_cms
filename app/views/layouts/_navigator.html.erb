@@ -20,7 +20,7 @@
                   <ul class="nav navbar-nav navbar-right">
 
                     <li class="cta"><%= link_to "Browse Books", root_path %></li>
-
+                    <li class="cta"><%= link_to "All Users", users_path %></li>
                   <% if !current_user %>
 
                       <li class="cta"><%= link_to "Sign up", new_user_path %></li>
@@ -34,8 +34,7 @@
 
                   <% else %>
 
-                      <li> <p> <%= link_to current_user.name, users_path %> </p></li>
-                      
+                      <li> <p> <%= link_to current_user.name, user_path(current_user.id) %> </p></li>
 
                   <% end %>
 

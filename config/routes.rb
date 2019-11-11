@@ -2,19 +2,17 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "books#index"
 
-  resources :users, :except => [:index] do
+  resources :users do
     resources :favorites
   end
   resources :sessions, only: [:new, :create]
 
   resources :books do
-    resources :reviews, only: [:index, :show]
+    resources :reviews, only: [:index]
   end
-
   resources :authors
   resources :genres
-  resources :reviews, only: [:new]
-  
+  resources :reviews, only: [:new, :create, :destroy]
   post '/sessions' => "sessions#create"
   post '/logout' => "sessions#destroy"
 

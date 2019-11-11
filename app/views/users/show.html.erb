@@ -1,0 +1,21 @@
+
+<div class="users show">
+<div class= "title">
+  <table summary="user detail view">
+    <tr>
+      <h3>User</h3>
+      <td><%= @user.email %></td>
+  </table>
+</div>
+    <table summary = "favorites">
+        <tr class = "header">
+        <h1>Favorited Titles</h1>
+        </tr>
+
+        <% @user.favorited_books.each do |r| %>
+        <tr>
+        <td><%= r.title %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>

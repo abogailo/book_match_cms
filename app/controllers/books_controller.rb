@@ -19,7 +19,11 @@ class BooksController < ApplicationController
     def create
       @book = Book.new(book_params)
       @author = Author.find_or_create_by(name: params[:book][:author_id])
-      @book.author_id = @author.id
+      @book.author_id = @author.id 
+
+      #adding this change in the model seems impossible. 
+      #I need to be able to pass the form field input into the model 
+      #to manipulate the input before validation for the strong params.
       if @book.save
         flash[:notice] = "book created successfully."
         redirect_to(books_path)
