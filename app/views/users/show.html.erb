@@ -14,13 +14,17 @@
 
         <% @user.favorited_books.each do |r| %>
         <tr>
-        <td><%= r.title %></td>
-        </tr>
-
-        <td class="actions">
+        <td>
+            <%= r.title %>
             <% if favorite_matches?(r) %>
-            <p> MATCH </p>
+            <span class="glyphicon glyphicon-ok" style="color:green"></span>
             <% end %>
         </td>
+        </tr>
+      <div>
+          <%if suggest_count?(match_count(@user.favorited_books))%>
+            <p> YOU ARE A MATCH  </p>
+          <%end %>
+      </div>
     </table>
   <% end %>

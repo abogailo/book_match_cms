@@ -1,23 +1,24 @@
-<% @genre_title = "All genres" %>
+
 <div class= "genres index">
-    <h2> genres </h2>
+  <h2> genres </h2>
 
-<%= link_to("Add New Genre", new_genre_path, :class => 'action new') %>
+  <%= link_to("Add New Genre", new_genre_path, :class => 'action new') %>
 
-<table class="listing" summary="genre list">
-  <tr class="header">
-    <th>Name</th>
-  </tr>
-  <% @genres.each do |genre| %>
-  <tr>
-    <td><%= genre.name %></td>
+  <table class="listing" summary="genre list">
+    <tr class="header">
+      <th>Name</th>
+    </tr>
     
-    <td class="actions">
-      <%= link_to("Show", genre_path(genre), :class => 'action show') %>
-      <%= link_to("Edit", edit_genre_path(genre), :class => 'action edit') %>
-      
-    </td>
-  </tr>
-  <% end %>
-</table>
+    <% @genres.each do |genre| %>
+      <tr>
+        <td><%= genre.name %>
+        </td>
+        
+        <td class="actions">
+          <%= link_to("Show", genre_path(genre), :class => 'action show') %>
+          <%= link_to("Edit", edit_genre_path(genre), :class => 'action edit') %> 
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>

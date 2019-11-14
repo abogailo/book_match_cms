@@ -1,7 +1,6 @@
 
 <%= link_to("Add Review", new_review_path(book_id: @book.id)) %>
 
-
 <div class="books show">
   <h2>Show book</h2>
 
@@ -48,17 +47,17 @@
     </tr>
   </table>
 
-    <table summary = "reviews">
-        <tr class = "header">
-        <th>Rating</th>
-        <th>Review</th>
-        </tr>
+  <table summary = "reviews">
+    <tr class = "header">
+    <th>Rating</th>
+    <th>Review</th>
+    </tr>
 
-        <% @book.reviews.each do |r| %>
-        <tr>
-        <td><%= r.rating %></td>
-        <td><%= r.review%></td>
-        </tr>
-        <% end %>
-    </table>
+    <% @book.reviews.recent(2).each do |r| %>
+    <tr>
+    <td><%= r.rating %></td>
+    <td><%= r.review%></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create]
 
   resources :books do
-    resources :reviews, only: [:index]
+    resources :reviews
   end
   resources :authors
   resources :genres

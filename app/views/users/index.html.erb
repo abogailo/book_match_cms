@@ -14,7 +14,10 @@
       <%= link_to("Show", user_path(user)) %>
       <%= link_to("Edit", edit_user_path(user), :class => 'action edit') unless !current_user.admin?%>
       <%= link_to("Delete", user_path(user), method: :delete, :class => 'action delete') unless !current_user.admin?%>
-    </td>
+      <%if suggest_count?(match_count(user.favorited_books))%>
+      <p> YOU ARE A MATCH  </p>
+    <%end %>
+      </td>
   </tr>
   <% end %>
 </table>

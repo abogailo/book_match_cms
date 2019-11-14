@@ -9,16 +9,17 @@
   <tr class="header">
     <th>Name</th>
   </tr>
+  
   <% @authors.each do |author| %>
-  <tr>
-    <td><%= author.name %></td>
-    
-    <td class="actions">
-      <%= link_to("Show", author_path(author), :class => 'action show') %>
-      <%= link_to("Edit", edit_author_path(author), :class => 'action edit') %>
+    <tr>
+      <td><%= author.name %></td>
       
-    </td>
-  </tr>
+      <td class="actions">
+        <%= link_to("Show", author_path(author), :class => 'action show') %>
+        <%= link_to("Edit", edit_author_path(author), :class => 'action edit') %>
+        
+      </td>
+    </tr>
   <% end %>
 </table>
 </div>

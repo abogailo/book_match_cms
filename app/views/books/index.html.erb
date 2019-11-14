@@ -3,43 +3,43 @@
     <h2> Pick a Book </h2>
 
     <%= link_to("Show authors", authors_path) %>
-<table class="listing" summary="Book list">
-  <tr class="header">
-    <th>Title</th>
-    <th>Description</th>
-    <th>Author</th>
-    <th>Quantity</th>
-    <th>Condition</th>
-    <th>Price</th>
-    <th>Year_published</th>
-    <th>Created by </th>
+  <table class="listing" summary="Book list">
+    <tr class="header">
+      <th>Title</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Quantity</th>
+      <th>Condition</th>
+      <th>Price</th>
+      <th>Year_published</th>
+      <th>Created by </th>
 
-  </tr>
-  <% @books.each do |book| %>
-  <tr>
-    <td><%= book.title %></td>
-    <td><%= book.description%></td>
-    <td><%= book.author_id %></td>
-    <td><%= book.quantity %></td>
-    <td><%= book.condition %></td>
-    <td><%= book.price %></td>
-    <td><%= book.year_published%></td>
-    <td><%= book.admin_id%></td>
-    
-    <td class="actions">
-      <%= link_to("Show", book_path(book), :class => 'action show') %>
-      <%= link_to("Edit", edit_book_path(book), :class => 'action edit') unless !current_user.admin?%>
-      <%= link_to("Delete", book_path(book), method: :delete, :class => 'action delete') unless !current_user.admin?%>
-      <% if current_user.favorited_books.include?(book) %>
-      <h5><%= button_to "UnFavorite \"#{book.title}\"",     
-            unfavorite_book_path(book.id), method: "POST" %></h5>
-      <% else %>
-        <h5><%= button_to "Favorite #{book.title}", favorite_book_path(book.id), 
-          method: "POST"  %></h5>
+    </tr>
+    <% @books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.description%></td>
+      <td><%= book.author_id %></td>
+      <td><%= book.quantity %></td>
+      <td><%= book.condition %></td>
+      <td><%= book.price %></td>
+      <td><%= book.year_published%></td>
+      <td><%= book.admin_id%></td>
+      
+      <td class="actions">
+        <%= link_to("Show", book_path(book), :class => 'action show') %>
+        <%= link_to("Edit", edit_book_path(book), :class => 'action edit') unless !current_user.admin?%>
+        <%= link_to("Delete", book_path(book), method: :delete, :class => 'action delete') unless !current_user.admin?%>
+        <% if current_user.favorited_books.include?(book) %>
+        <h5><%= button_to "UnFavorite \"#{book.title}\"",     
+              unfavorite_book_path(book.id), method: "POST" %></h5>
+        <% else %>
+          <h5><%= button_to "Favorite #{book.title}", favorite_book_path(book.id), 
+            method: "POST"  %></h5>
 
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 </div>

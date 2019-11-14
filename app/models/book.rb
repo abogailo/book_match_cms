@@ -1,4 +1,7 @@
 class Book < ApplicationRecord
+    validates :title, presence: true, uniqueness: true
+    validates :genres_attributes, acceptance: { message: 'must have a genre' }
+    
     has_one :author
     has_many :reviews, dependent: :destroy
 
@@ -10,6 +13,7 @@ class Book < ApplicationRecord
     #add find and create by in this model, issue getting params in model, issue getting name of author to change to author id. perhaps call this method
 #https://stackoverflow.com/questions/3579924/accepts-nested-attributes-for-with-find-or-create/
 #try referencing this again
+
 
     def genres_attributes=(genre_attributes)
         genre_attributes.values.each do |genre_attribute|
