@@ -2,7 +2,7 @@ class Book < ApplicationRecord
     validates :title, presence: true, uniqueness: true
     validates :genres_attributes, acceptance: { message: 'must have a genre' }
     
-    has_one :author
+    belongs_to :author
     has_many :reviews, dependent: :destroy
 
     has_many :genre_books
@@ -22,9 +22,5 @@ class Book < ApplicationRecord
                 self.genres << genre
             end
         end
-    end
-
-    def self.favorited_books
-        select { |h| h.users.count >= 5 }
     end
 end
