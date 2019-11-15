@@ -2,7 +2,9 @@ class Book < ApplicationRecord
     validates :title, presence: true, uniqueness: true
     validates :genres_attributes, acceptance: { message: 'must have a genre' }
     
-    belongs_to :author
+    has_many :author_books
+    has_many :authors, through: :author_books
+
     has_many :reviews, dependent: :destroy
 
     has_many :genre_books

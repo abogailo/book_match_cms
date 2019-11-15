@@ -1,5 +1,4 @@
-
-<%= link_to("<< Back to List", books_path, :class => 'back-link') %>
+<%= render :partial => 'layouts/error_handling', :locals => {:object => @author} %>
 
 <div class="books new">
   <h2>Create author</h2>
@@ -10,9 +9,9 @@
       <tr>
         <th>Name</th>
         <td><%= f.text_field(:name) %></td>
-      </tr>
-      
-</table>
+      </tr> 
+    </table>
+    
     <div class="form-buttons">
       <%= f.submit("Create Author") %>
     </div>
