@@ -19,7 +19,6 @@ class BooksController < ApplicationController
     def create
       @book = Book.new(book_params)
       @author = Author.find_or_create_by(name: params[:book][:author_id])
-      @book.author_id = @author.id 
 
       #adding this change in the model seems impossible. 
       #I need to be able to pass the form field input into the model 
@@ -73,7 +72,6 @@ class BooksController < ApplicationController
       params.require(:book).permit(
         :title, 
         :description, 
-        :author_id, 
         :quantity, 
         :condition, 
         :price, 
