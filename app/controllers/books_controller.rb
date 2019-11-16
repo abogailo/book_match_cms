@@ -20,7 +20,6 @@ class BooksController < ApplicationController
       @book = Book.new(book_params)
       @author = Author.find_or_create_by(name: params[:book][:author_name])
       @book.author_name = @author.name
-      #adding this change in the model seems impossible. 
       #I need to be able to pass the form field input into the model 
       #to manipulate the input before validation for the strong params.
       if @book.save
@@ -38,6 +37,8 @@ class BooksController < ApplicationController
   
     def update
       @book = Book.find(params[:id])
+      @author = Author.find_or_create_by(name: params[:book][:author_name])
+      @book.author_name = @author.name
       if @book.update_attributes(book_params)
         flash[:notice] = "book updated successfully."
         redirect_to(book_path(@book))
