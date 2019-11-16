@@ -3,7 +3,7 @@
     <h2> Pick a Book </h2>
 
     <%= link_to("Show authors", authors_path) %>
-  <table class="table table-borderless" summary="Book list">
+    <table class="table">
     <tr class="header">
       <th align="center">Title</th>
       <th align="center">Description</th>
@@ -18,7 +18,7 @@
     <tr>
       <td align="center"><%= book.title %></td>
       <td align="center"><%= book.description%></td>
-      <td align="center"><%= book.authors.name %></td>
+      <td align="center"><%= book.author_name%></td>
       <td align="center"><%= book.quantity %></td>
       <td align="center"><%= book.condition %></td>
       <td align="center"><%= book.price %></td>

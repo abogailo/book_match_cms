@@ -6,3 +6,5 @@
   
     <%= f.submit 'Update User' %>
   <% end %>
+
+  <%= link_to("Delete", user_path(@user), method: :delete, :class => 'action delete') unless !current_user%>

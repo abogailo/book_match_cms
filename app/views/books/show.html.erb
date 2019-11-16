@@ -1,13 +1,12 @@
 
-<%= link_to("Add Review", new_review_path(book_id: @book.id)) %>
 
-<div class="books show">
+
+<div>
   <h2>Show book</h2>
 
-  <table summary="book detail view">
+  <table class="table borderless">
     <tr>
       <th>Name</th>
-      <th colspan="45">
       <td><%= @book.title %></td>
     </tr>
     <tr>
@@ -16,7 +15,7 @@
     </tr>
     <tr>
       <th>Author</th>
-      <td><%= @book.author_id %></td>
+      <td><%= @book.author_name%></td>
     </tr>
     <tr>
       <th>Quantity</th>
@@ -47,8 +46,12 @@
       <td><%= @book.updated_at %></td>
     </tr>
   </table>
-
-  <table summary = "reviews">
+</div>
+</br>
+<%= link_to("Add Review", new_review_path(book_id: @book.id)) %>
+<div>
+<h2><%= @book.title %>'s Review</h2>
+  <table class="table borderless">
     <tr class = "header">
     <th>Rating</th>
     <th>Review</th>
@@ -56,7 +59,11 @@
 
     <% @book.reviews.recent(2).each do |r| %>
     <tr>
-    <td><%= r.rating %></td>
+    <td>
+      <%= (r.rating).times do %> 
+        <span class="glyphicon glyphicon-star" style="color:orange"></span> 
+      <% end %>
+    </td>
     <td><%= r.review%></td>
     </tr>
     <% end %>

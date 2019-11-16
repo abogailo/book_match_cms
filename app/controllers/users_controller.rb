@@ -40,6 +40,20 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    if current_user.id == @user.id
+      @user.destroy
+      flash[:notice] = "user destroyed successfully."
+      redirect_to root_path
+    else
+      @user.destroy
+      flash[:notice] = "user destroyed successfully."
+      session.delete :user_id
+      redirect_to new_session_path
+    end
+  end
   
   private
 

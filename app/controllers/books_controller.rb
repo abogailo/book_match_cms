@@ -18,8 +18,8 @@ class BooksController < ApplicationController
   
     def create
       @book = Book.new(book_params)
-      @author = Author.find_or_create_by(name: params[:book][:author_id])
-
+      @author = Author.find_or_create_by(name: params[:book][:author_name])
+      @book.author_name = @author.name
       #adding this change in the model seems impossible. 
       #I need to be able to pass the form field input into the model 
       #to manipulate the input before validation for the strong params.
@@ -72,6 +72,7 @@ class BooksController < ApplicationController
       params.require(:book).permit(
         :title, 
         :description, 
+        :author_name,
         :quantity, 
         :condition, 
         :price, 

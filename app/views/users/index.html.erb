@@ -1,11 +1,7 @@
 <div class= "books index">
     <h2> All Users </h2>
 
-<table class="listing" summary="Book list">
-  <tr class="header">
-    <th>EMAIL</th>
-
-  </tr>
+<table class="table">
   <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
@@ -14,8 +10,10 @@
       <%= link_to("Show", user_path(user)) %>
       <%= link_to("Edit", edit_user_path(user), :class => 'action edit') unless !current_user.admin?%>
       <%= link_to("Delete", user_path(user), method: :delete, :class => 'action delete') unless !current_user.admin?%>
+     </td>
+     <td> 
       <%if suggest_count?(match_count(user.favorited_books))%>
-      <p> YOU ARE A MATCH  </p>
+      <p> <span class="glyphicon glyphicon-ok" style="color:green"></span>YOU ARE A MATCH <span class="glyphicon glyphicon-ok" style="color:green"></span> </p>
     <%end %>
       </td>
   </tr>

@@ -1,6 +1,5 @@
 <%= render :partial => 'layouts/error_handling', :locals => {:object => @book} %>
 
- <div class = "forms">
   <%= form_for(@book) do |f| %>
 
       <table summary="book form fields">
@@ -14,7 +13,7 @@
         </tr>
         <tr>
           <th>Author Full Name</th>
-          <td><%= f.text_field(:author_id) %></td>
+          <td><%= f.text_field(:author_name) %></td>
         </tr>
         <tr>
           <th>Quantity</th>
@@ -47,4 +46,3 @@
       </div>
 
     <% end %>
-  </div>
