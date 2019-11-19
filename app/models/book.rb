@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+    scope :admin, -> { where(admin: true) }
+    default_scope { order("title ASC")}
     validates :title, presence: true, uniqueness: true
     validates :genres_attributes, acceptance: { message: 'must have a genre' }
     

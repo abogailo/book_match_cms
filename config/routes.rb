@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :authors
   resources :genres
-  resources :reviews, only: [:new, :create, :destroy]
+  resources :reviews
   post '/sessions' => "sessions#create"
   post '/logout' => "sessions#destroy"
 
