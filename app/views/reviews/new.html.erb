@@ -9,6 +9,7 @@
   <%= f.label :review %>
   <%= f.text_field :review %>
   <%= f.hidden_field "book_id", :value => params[:book_id] %>
+  <%= f.hidden_field "user_id", :value => current_user.id %>
   <br />
 
   <%= f.submit %>

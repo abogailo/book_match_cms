@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-      if current_user.admin
+      if current_user.admin || 
         @review.delete
       end
     end
@@ -26,6 +26,7 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(
         :book_id, 
         :rating, 
-        :review)
+        :review,
+        :user_id)
     end
 end
