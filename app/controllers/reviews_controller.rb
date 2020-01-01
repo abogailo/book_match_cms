@@ -17,7 +17,6 @@ class ReviewsController < ApplicationController
     def destroy
       if current_user.admin
         @review.delete
-        redirect_to show_episode_path(@show, @episode), flash: {notice: "comment deleted"}
       end
     end
 
