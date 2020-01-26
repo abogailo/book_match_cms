@@ -3,13 +3,15 @@ Rails.application.routes.draw do
   root "books#index"
 
   resources :users do
+    resources :reviews
     resources :favorites
   end
   resources :sessions, only: [:new, :create]
 
   resources :books do
-    resources :reviews
+    resources :reviews, only: [:new, :index]
   end
+  
   resources :authors
   resources :genres
   resources :reviews

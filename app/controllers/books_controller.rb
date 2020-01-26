@@ -10,6 +10,7 @@ class BooksController < ApplicationController
     def show
       @book = Book.find(params[:id])
       @review = @book.reviews.find_by(id: params[:id])
+      @reviews = @book.reviews.recent(2)
     end
   
     def new

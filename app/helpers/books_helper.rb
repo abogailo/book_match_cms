@@ -1,5 +1,5 @@
 module BooksHelper
-
+    #class methods
     def favorite_matches?(book)
         if !current_user.favorited_books.empty?
            current_user.favorited_books.include? book

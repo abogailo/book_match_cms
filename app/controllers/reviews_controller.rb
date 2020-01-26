@@ -4,6 +4,20 @@ class ReviewsController < ApplicationController
       @review = Review.new(book_id: params[:book_id])
     end
 
+    def index
+        if params[:book_id]
+          @reviews = Book.find(params[:book_id]).reviews
+        elsif params[:user_id]
+          @reviews = User.find(params[:user_id]).reviews
+        else 
+          @review = Review.all
+        end
+    end
+
+    def show
+        @review = Review.find(params[:id])
+    end
+
     def create
       @review = Review.new(review_params)
       if @review.save
@@ -15,7 +29,7 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-      if current_user.admin || 
+      if current_user.admin 
         @review.delete
       end
     end
