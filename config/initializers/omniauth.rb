@@ -1,3 +1,6 @@
-Rails.application.config.middleware.use OmniAuth::Builder do 
-    provider :github, 'dba5451455cc62be72c7', '420420c223e98c959c91b1f6a6ea98ba942d73a1' 
-end
+Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :github,
+             ENV.fetch("GITHUB_CLIENT_ID"),
+             ENV.fetch("GITHUB_CLIENT_SECRET"),
+             scope: "user:email"
+  end
