@@ -14,7 +14,6 @@ They will also be able to remove users including their own account. For the sake
 
 <p>Clone this Repo</p>
 <p>Run 'bundle install' from the root directory</p>
-<p>Add the Sqlite gem</p>
 <p>Run 'rails db:migrate'</p>
 <p>Run rails s -or- rails server in your console</p>
 <p>In your browser, navigate to https://localhost:3000/ </p>
